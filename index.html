@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Architect Store Premium</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        :root {
+            --gold: #ffca28;
+            --dark: #0f172a;
+            --emerald: #10b981;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark);
+            color: white;
+            margin: 0;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            color: var(--gold);
+            font-size: 26px;
+            margin: 0 0 8px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 202, 40, 0.2);
+            border-radius: 24px;
+            padding: 25px;
+            width: 100%;
+            max-width: 340px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature-list {
+            width: 100%;
+            margin-bottom: 25px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            margin: 14px 0;
+            font-size: 15px;
+            text-align: right;
+            width: 100%;
+        }
+
+        .feature::before {
+            content: '✓';
+            color: var(--emerald);
+            margin-left: 12px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* تأثير النبض للسعر (Pulse Effect) */
+        @keyframes pulse-gold {
+            0% { transform: scale(1); text-shadow: 0 0 0 rgba(255, 202, 40, 0); }
+            50% { transform: scale(1.05); text-shadow: 0 0 15px rgba(255, 202, 40, 0.5); }
+            100% { transform: scale(1); text-shadow: 0 0 0 rgba(255, 202, 40, 0); }
+        }
+
+        .price-tag {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            color: var(--gold);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            width: 100%;
+            animation: pulse-gold 2s infinite ease-in-out;
+        }
+
+        .price-tag span {
+            font-size: 14px;
+            color: #ccc;
+            font-weight: normal;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .btn-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--emerald), #059669);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 16px;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn:active {
+            transform: scale(0.96);
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+            filter: brightness(0.9);
+        }
+
+        .footer-info {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 11px;
+            color: #94a3b8;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🚀 خدمة الـ Premium 💎</h1>
+        <p>احصل على رابط واحد مباشر (Direct) لأي لعبة تبحث عنها</p>
+    </div>
+
+    <div class="card">
+        <div class="feature-list">
+            <div class="feature">رابط واحد مباشر للتحميل فوراً.</div>
+            <div class="feature">ملف واحد كامل بدون تقسيم (Single File).</div>
+            <div class="feature">بدون إعلانات أو روابط مختصرة.</div>
+            <div class="feature">أقصى سرعة تحميل يدعمها اتصالك.</div>
+            <div class="feature">ضمان عمل الرابط 100%.</div>
+        </div>
+
+        <div class="price-tag">
+            30 MAD
+            <span>/ لـ كل لعبة 🎮</span>
+        </div>
+
+        <div class="btn-container">
+            <a href="https://t.me/Arbi_m0" class="btn">اطلب رابط اللعبة الآن</a>
+        </div>
+
+        <div class="footer-info">
+            Bank Transfer | Binance Pay | Cash Deposit
+        </div>
+    </div>
+
+    <script>
+        // إعدادات Telegram WebApp
+        let tg = window.Telegram.WebApp;
+        tg.expand(); 
+        tg.ready();
+        
+        // تغيير لون شريط الحالة العلوي ليتناسب مع التصميم
+        tg.setHeaderColor('#0f172a');
+        tg.setBackgroundColor('#0f172a');
+    </script>
+</body>
+</html>
